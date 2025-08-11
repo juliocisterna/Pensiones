@@ -1,249 +1,106 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Reforma de Pensiones 2025 — Demo</title>
-  <style>
-    :root{
-      --blue-900:#274b9f;
-      --blue-800:#2f5fcb;
-      --blue-700:#3a6ed9;
-      --blue-600:#4a7ee6;
-      --blue-500:#5d8ff0;
-      --slate-900:#0f172a;
-      --slate-800:#1f2937;
-      --slate-700:#334155;
-      --slate-600:#475569;
-      --slate-500:#64748b;
-      --slate-400:#94a3b8;
-      --slate-200:#e2e8f0;
-      --slate-100:#f1f5f9;
-      --white:#fff;
-      --brand:#f2c94c; /* amarillo título 2025 */
-      --radius-xl:18px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; color:var(--slate-800); background:#fff}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1180px;margin:0 auto;padding:0 20px}
-
-    /* Topbar */
-    .topbar{background:var(--blue-700);color:#eaf2ff}
-    .topbar-inner{display:flex;align-items:center;gap:18px;padding:16px 0}
-    .brand{display:flex;align-items:center;gap:14px;font-weight:700;letter-spacing:.2px}
-    .brand .logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#d9e6ff,#85a8ff);display:grid;place-items:center;color:#1f3a8a;font-size:18px;font-weight:900}
-    .brand .divider{width:1px;height:24px;background:#9db7ff55}
-    .brand .sala{font-weight:800}
-
-    .top-actions{margin-left:auto;display:flex;align-items:center;gap:12px}
-    .search{width:36px;height:36px;border-radius:999px;background:#ffffff22;display:grid;place-items:center;font-weight:700}
-    .btn{padding:10px 14px;border-radius:999px;border:1px solid #ffffff55;color:#fff;background:transparent;font-weight:600;cursor:pointer}
-    .btn.primary{background:#fff;color:#2647a5;border-color:#fff}
-
-    /* Navbar */
-    .nav{background:#f6f8ff;border-bottom:1px solid #e6edff}
-    .nav ul{margin:0;padding:0;display:flex;gap:26px;list-style:none}
-    .nav a{display:block;padding:12px 0;color:#274380;font-weight:600}
-    .nav a:hover{color:#1f3a8a}
-
-    /* Hero */
-    .hero{background:linear-gradient(135deg, #2d50aa 0%, #3b6be0 45%, #2e58c8 100%);color:#eaf2ff;position:relative}
-    .hero .container{padding:64px 20px}
-    .hero h1{margin:0;font-size:48px;line-height:1.05;font-weight:900;letter-spacing:.2px}
-    .hero .year{color:var(--brand)}
-    .hero p{margin:16px 0 0;color:#e6edff;max-width:820px;font-size:18px}
-
-    /* Tabs */
-    .tabs{display:flex;gap:18px;margin-top:28px}
-    .tab{flex:1;min-width:220px;background:#fff;color:#2b4aa3;border-radius:24px;border:1px solid #d9e4ff;padding:16px 18px;font-weight:800;text-align:center;box-shadow:0 2px 0 #d7e2ff}
-    .tab.active{background:#f5f8ff;border-color:#c7d6ff;box-shadow:inset 0 -3px 0 #2d57c7}
-
-    /* Section title */
-    .section{padding:34px 0}
-    .section h2{font-size:36px;margin:10px 0 18px;color:#2a3e75}
-
-    /* Pills */
-    .pills{display:flex;flex-wrap:wrap;gap:14px}
-    .pill{padding:14px 18px;border-radius:999px;border:1.5px solid #e5ebff;background:#fff;box-shadow:0 1px 0 #e8edff;cursor:pointer;font-weight:700;color:#2a3e75}
-    .pill.active{background:#e9efff;border-color:#d6e1ff}
-
-    /* Cards */
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
-    .card{background:#fff;border:1px solid #e7eefc;border-radius:20px;padding:20px;box-shadow:0 8px 16px rgba(27, 55, 145, 0.06)}
-    .card h3{margin:0 0 8px;font-size:18px;color:#253b73}
-    .card p{margin:0;color:#4b5f8f}
-
-    /* Footer */
-    footer{margin-top:40px;background:#f7f9ff;border-top:1px solid #e7eefc}
-    footer .container{padding:24px 20px;color:#4b5f8f;font-size:14px}
-
-    /* Responsive */
-    @media (max-width: 1024px){
-      .hero h1{font-size:40px}
-      .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-    }
-    @media (max-width: 720px){
-      .topbar-inner{flex-wrap:wrap;gap:10px}
-      .top-actions{margin-left:0}
-      .nav .container{padding:0 16px}
-      .nav ul{flex-wrap:wrap;gap:16px}
-      .hero .container{padding:42px 16px}
-      .hero h1{font-size:32px}
-      .tabs{flex-direction:column}
-      .grid{grid-template-columns:1fr}
-    }
-  </style>
-</head>
-<body>
-  <!-- Topbar -->
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <a class="brand" href="#">
-        <div class="logo">C</div>
-        <div>
-          <div style="font-size:18px;line-height:1">Cuprum <span style="font-weight:600">afp</span></div>
-          <div style="font-size:11px;opacity:.85">Una compañía Principal*</div>
-        </div>
-        <div class="divider"></div>
-        <div class="sala">Sala360°</div>
-      </a>
-      <div class="top-actions">
-        <div class="search" aria-label="Buscar">🔎</div>
-        <button class="btn">Ingresa a tu cuenta</button>
-        <button class="btn primary">Cámbiate a Cuprum</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Nav -->
-  <nav class="nav">
-    <div class="container">
-      <ul>
-        <li><a href="#">Pensiones</a></li>
-        <li><a href="#">Sistema AFP</a></li>
-        <li><a href="#">Beneficios</a></li>
-        <li><a href="#">Multifondos</a></li>
-        <li><a href="#">Economía y Finanzas</a></li>
-        <li><a href="#">Asesoría ▾</a></li>
-        <li><a href="#" style="color:#1f3a8a;font-weight:800">Reforma de Pensiones</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <h1>Reforma de Pensiones <span class="year">2025</span></h1>
-      <p>Esta nueva Reforma de Pensiones trae distintos cambios al sistema, con el objetivo de fortalecer las pensiones y mejorar la protección social en Chile.</p>
-
-      <div class="tabs" role="tablist">
-        <button class="tab active" data-tab="cambios" role="tab" aria-selected="true">PRINCIPALES CAMBIOS</button>
-        <button class="tab" data-tab="webinar" role="tab" aria-selected="false">WEBINAR REFORMA DE PENSIONES</button>
-        <button class="tab" data-tab="faq" role="tab" aria-selected="false">PREGUNTAS Y RESPUESTAS</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section: Principales cambios -->
-  <section class="section container" id="cambios">
-    <h2>Principales cambios a la reforma</h2>
-
-    <div class="pills" id="pillbar">
-      <button class="pill active" data-topic="fondos">Fondos Generacionales</button>
-      <button class="pill" data-topic="pgu">Pensión Garantizada Universal</button>
-      <button class="pill" data-topic="mujeres">Compensación a mujeres</button>
-      <button class="pill" data-topic="anios">Beneficio por años cotizados</button>
-      <button class="pill" data-topic="tasa">Aumento cotización individual</button>
-    </div>
-
-    <div class="grid" id="cards">
-      <article class="card" data-topic="fondos">
-        <h3>Nuevo esquema: Fondos Generacionales</h3>
-        <p>Transición desde multifondos hacia fondos por cohorte etaria, con deslizamiento automático del riesgo a lo largo de la vida laboral.</p>
-      </article>
-      <article class="card" data-topic="fondos">
-        <h3>Menos decisiones complejas</h3>
-        <p>Se simplifica la elección al asignar fondos por edad, manteniendo diversificación y gobierno de inversiones.</p>
-      </article>
-      <article class="card" data-topic="fondos">
-        <h3>Ruta de transición</h3>
-        <p>Calendario gradual de migración desde fondos actuales, resguardando costos de transacción y continuidad.</p>
-      </article>
-
-      <article class="card" data-topic="pgu" hidden>
-        <h3>Mejoras PGU</h3>
-        <p>Ajustes en cobertura y monto objetivo, sujetos a ley y reglamentos específicos.</p>
-      </article>
-      <article class="card" data-topic="mujeres" hidden>
-        <h3>Compensación por lagunas</h3>
-        <p>Reconoce periodos de cuidado y brechas de cotización con mecanismos compensatorios.</p>
-      </article>
-      <article class="card" data-topic="anios" hidden>
-        <h3>Beneficios por densidad</h3>
-        <p>Incentivos a mayor continuidad de cotizaciones con escalas por tramos.</p>
-      </article>
-      <article class="card" data-topic="tasa" hidden>
-        <h3>Cotización adicional</h3>
-        <p>Incremento gradual de la tasa de cotización individual, según cronograma normativo.</p>
-      </article>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      Demo educativo sin fines comerciales. Marcas y estilos visuales referenciales para fines de maqueta. © 2025
-    </div>
-  </footer>
-
-  <script>
-    // Tabs behavior
-    const tabButtons = document.querySelectorAll('.tab');
-    tabButtons.forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        tabButtons.forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-        // Simple scroll to section for the active tab (only the first tab has content in esta maqueta)
-        if(btn.dataset.tab==='cambios'){
-          document.getElementById('cambios').scrollIntoView({behavior:'smooth'});
-        }
-      });
-    });
-
-    // Pills filter
-    const pills = document.querySelectorAll('.pill');
-    const cards = document.querySelectorAll('#cards [data-topic]');
-    pills.forEach(p=>{
-      p.addEventListener('click',()=>{
-        pills.forEach(x=>x.classList.remove('active'));
-        p.classList.add('active');
-        const topic=p.dataset.topic;
-        cards.forEach(c=>{
-          const match=c.dataset.topic===topic;
-          // show cards that match the topic; keep three sample cards for the first topic
-          if(topic==='fondos'){
-            c.hidden = c.dataset.topic!==topic ? true : false;
-          }else{
-            c.hidden = !match;
-          }
-        });
-        // if there are no visible cards for that topic, reveal one placeholder
-        const anyVisible=[...cards].some(c=>!c.hidden);
-        if(!anyVisible){
-          const placeholder=document.createElement('article');
-          placeholder.className='card';
-          placeholder.innerHTML = `<h3>Contenido próximamente</h3><p>Agrega detalles para el tema: ${topic}.</p>`;
-          document.getElementById('cards').appendChild(placeholder);
-        }
-      });
-    });
-    <script type="module">
+<script type="module">
     import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
     Chatbot.init({
         chatflowid: "cd20d6d7-cc8d-47b0-b30a-00a6616020fb",
         apiHost: "https://cloud.flowiseai.com",
+        chatflowConfig: {
+            /* Chatflow Config */
+        },
+        observersConfig: {
+            /* Observers Config */
+        },
+        theme: {
+            button: {
+                backgroundColor: '#3B81F6',
+                right: 20,
+                bottom: 20,
+                size: 48,
+                dragAndDrop: true,
+                iconColor: 'white',
+                customIconSrc: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg',
+                autoWindowOpen: {
+                    autoOpen: true,
+                    openDelay: 2,
+                    autoOpenOnMobile: false
+                }
+            },
+            tooltip: {
+                showTooltip: true,
+                tooltipMessage: 'Hi There 👋!',
+                tooltipBackgroundColor: 'black',
+                tooltipTextColor: 'white',
+                tooltipFontSize: 16
+            },
+            disclaimer: {
+                title: 'Disclaimer',
+                message: "By using this chatbot, you agree to the <a target=\"_blank\" href=\"https://flowiseai.com/terms\">Terms & Condition</a>",
+                textColor: 'black',
+                buttonColor: '#3b82f6',
+                buttonText: 'Start Chatting',
+                buttonTextColor: 'white',
+                blurredBackgroundColor: 'rgba(0, 0, 0, 0.4)',
+                backgroundColor: 'white'
+            },
+            customCSS: ``,
+            chatWindow: {
+                showTitle: true,
+                showAgentMessages: true,
+                title: 'Flowise Bot',
+                titleAvatarSrc: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg',
+                welcomeMessage: 'Hello! This is custom welcome message',
+                errorMessage: 'This is a custom error message',
+                backgroundColor: '#ffffff',
+                backgroundImage: 'enter image path or link',
+                height: 700,
+                width: 400,
+                fontSize: 16,
+                starterPrompts: [
+                    "What is a bot?",
+                    "Who are you?"
+                ],
+                starterPromptFontSize: 15,
+                clearChatOnReload: false,
+                sourceDocsTitle: 'Sources:',
+                renderHTML: true,
+                botMessage: {
+                    backgroundColor: '#f7f8ff',
+                    textColor: '#303235',
+                    showAvatar: true,
+                    avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png'
+                },
+                userMessage: {
+                    backgroundColor: '#3B81F6',
+                    textColor: '#ffffff',
+                    showAvatar: true,
+                    avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png'
+                },
+                textInput: {
+                    placeholder: 'Type your question',
+                    backgroundColor: '#ffffff',
+                    textColor: '#303235',
+                    sendButtonColor: '#3B81F6',
+                    maxChars: 50,
+                    maxCharsWarningMessage: 'You exceeded the characters limit. Please input less than 50 characters.',
+                    autoFocus: true,
+                    sendMessageSound: true,
+                    sendSoundLocation: 'send_message.mp3',
+                    receiveMessageSound: true,
+                    receiveSoundLocation: 'receive_message.mp3'
+                },
+                feedback: {
+                    color: '#303235'
+                },
+                dateTimeToggle: {
+                    date: true,
+                    time: true
+                },
+                footer: {
+                    textColor: '#303235',
+                    text: 'Powered by',
+                    company: 'Flowise',
+                    companyLink: 'https://flowiseai.com'
+                }
+            }
+        }
     })
-    </script>
-  </script>
-</body>
-</html>
+</script>
