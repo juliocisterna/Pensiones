@@ -1,4 +1,221 @@
-<script type="module">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reforma de Pensiones 2025 — Replica Demo</title>
+  <meta name="description" content="Replica demo estilo Cuprum Sala360° para la sección Reforma de Pensiones 2025 con chatbot embebido." />
+  <style>
+    :root{
+      --brand-blue:#4a6ccd;      /* barra superior */
+      --brand-blue-dark:#274b9f; /* texto menú */
+      --nav-bg:#f4f7ff;          /* fondo nav */
+      --hero-1:#3a63c5;          /* gradiente hero */
+      --hero-2:#254fb2;
+      --accent:#f2c94c;          /* 2025 */
+      --ink:#243b6b;             /* títulos */
+      --muted:#516697;           /* texto */
+      --chip:#e7edff;            /* chips */
+      --chip-border:#d4defc;
+      --card-border:#e6ecff;
+      --white:#fff;
+      --radius-xl:22px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--muted);background:var(--white)}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1180px;margin:0 auto;padding:0 22px}
+
+    /* Topbar */
+    .topbar{background:var(--brand-blue);color:#eaf2ff}
+    .topbar .inner{display:flex;align-items:center;gap:18px;padding:16px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800}
+    .brand-logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#dce7ff,#8fb0ff);display:grid;place-items:center;color:#1d3b8a;font-weight:900}
+    .brand .sala{margin-left:6px;font-weight:900;color:#ffd166}
+    .search{margin-left:auto;display:flex;align-items:center;gap:12px}
+    .btn{padding:10px 16px;border-radius:999px;border:1px solid #ffffff55;color:#fff;background:transparent;font-weight:700;cursor:pointer}
+    .btn.primary{background:#fff;color:#2747a5;border-color:#fff}
+
+    /* Navbar */
+    .nav{background:var(--nav-bg);border-bottom:1px solid #e6edff}
+    .nav ul{list-style:none;display:flex;gap:26px;margin:0;padding:12px 0}
+    .nav a{color:#28467f;font-weight:700}
+    .nav a.active{color:#c99732}
+
+    /* Hero */
+    .hero{background:linear-gradient(135deg,var(--hero-1) 0%, var(--hero-2) 100%);color:#f1f6ff}
+    .hero .container{padding:64px 22px}
+    .hero h1{margin:0;font-size:56px;line-height:1.05;font-weight:900;color:#f5f8ff}
+    .hero .year{color:var(--accent)}
+    .hero p{margin:16px 0 0;max-width:800px;color:#e7efff;font-size:18px}
+
+    /* Tabs ribbon */
+    .tabs-wrap{position:relative;margin-top:28px}
+    .tabs{display:flex;gap:26px}
+    .tab{flex:1;min-width:240px;background:#fff;border:1px solid #dbe6ff;border-radius:24px;padding:18px 20px;text-align:center;color:#28467f;font-weight:900;box-shadow:0 2px 0 #dbe6ff}
+    .tab.active{box-shadow:inset 0 -4px 0 #2d57c7}
+
+    /* Section */
+    .section{padding:42px 0}
+    .section h2{margin:6px 0 18px;font-size:40px;color:var(--ink)}
+
+    /* Chips */
+    .chips{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
+    .chip{padding:14px 18px;border-radius:999px;border:1.5px solid var(--chip-border);background:#fff;color:#28467f;font-weight:800;box-shadow:0 1px 0 #e8edff}
+    .chip.active{background:#f1e1b1;border-color:#edd48a}
+
+    /* Cards */
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}
+    .card{background:#fff;border:1px solid var(--card-border);border-radius:18px;padding:18px;box-shadow:0 10px 20px rgba(27,55,145,.06)}
+    .card h3{margin:0 0 8px;color:#253b73;font-size:18px}
+
+    /* Footer */
+    footer{margin-top:44px;background:#f7f9ff;border-top:1px solid #e7eefc;color:#556b9a}
+    footer .container{padding:22px}
+
+    /* Responsive */
+    @media (max-width:1024px){
+      .hero h1{font-size:46px}
+      .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width:720px){
+      .topbar .inner{flex-wrap:wrap}
+      .hero .container{padding:44px 16px}
+      .hero h1{font-size:36px}
+      .tabs{flex-direction:column}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container inner">
+      <div class="brand">
+        <div class="brand-logo">C</div>
+        <div>
+          <div style="font-size:18px;line-height:1">Cuprum <span style="font-weight:600">afp</span></div>
+          <div style="font-size:11px;opacity:.9">Una compañía Principal*</div>
+        </div>
+        <div class="sala">Sala360°</div>
+      </div>
+      <div class="search">
+        <div title="Buscar" style="width:36px;height:36px;border-radius:50%;background:#ffffff22;display:grid;place-items:center">🔎</div>
+        <button class="btn">Ingresa a tu cuenta</button>
+        <button class="btn primary">Cámbiate a Cuprum</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navbar -->
+  <nav class="nav">
+    <div class="container">
+      <ul>
+        <li><a href="#">Pensiones</a></li>
+        <li><a href="#">Sistema AFP</a></li>
+        <li><a href="#">Beneficios</a></li>
+        <li><a href="#">Multifondos</a></li>
+        <li><a href="#">Economía y Finanzas</a></li>
+        <li><a href="#">Asesoría ▾</a></li>
+        <li><a class="active" href="#">Reforma de Pensiones</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Reforma de Pensiones <span class="year">2025</span></h1>
+      <p>Esta nueva Reforma de Pensiones trae distintos cambios al sistema, con el objetivo de fortalecer las pensiones y mejorar la protección social en Chile.</p>
+
+      <div class="tabs-wrap">
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-tab="cambios" role="tab" aria-selected="true">PRINCIPALES CAMBIOS</button>
+          <button class="tab" data-tab="webinar" role="tab">WEBINAR REFORMA DE PENSIONES</button>
+          <button class="tab" data-tab="faq" role="tab">PREGUNTAS Y RESPUESTAS</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Principales cambios -->
+  <section class="section">
+    <div class="container">
+      <h2>Principales cambios a la reforma</h2>
+
+      <div class="chips" id="chips">
+        <button class="chip active" data-topic="fondos">Fondos Generacionales</button>
+        <button class="chip" data-topic="pgu">Pensión Garantizada Universal</button>
+        <button class="chip" data-topic="mujeres">Compensación a mujeres</button>
+        <button class="chip" data-topic="anios">Beneficio por años cotizados</button>
+        <button class="chip" data-topic="tasa">Aumento cotización individual</button>
+      </div>
+
+      <div class="grid" id="cards">
+        <article class="card" data-topic="fondos">
+          <h3>Nuevo esquema: fondos por cohorte</h3>
+          <p>Transición desde multifondos hacia fondos por edad, ajustando el riesgo a lo largo de la vida laboral.</p>
+        </article>
+        <article class="card" data-topic="fondos">
+          <h3>Menos decisiones complejas</h3>
+          <p>Asignación automática acorde a tramo etario. Se mantiene diversificación y gobierno de inversiones.</p>
+        </article>
+        <article class="card" data-topic="fondos">
+          <h3>Ruta de transición</h3>
+          <p>Calendario gradual de migración para resguardar costos de transacción y continuidad.</p>
+        </article>
+
+        <article class="card" data-topic="pgu" hidden>
+          <h3>Ajustes en PGU</h3>
+          <p>Cobertura y monto objetivo sujetos a definiciones reglamentarias.</p>
+        </article>
+        <article class="card" data-topic="mujeres" hidden>
+          <h3>Reconocimiento de cuidados</h3>
+          <p>Mecanismos compensatorios por lagunas previsionales y brechas de cotización.</p>
+        </article>
+        <article class="card" data-topic="anios" hidden>
+          <h3>Beneficios por densidad</h3>
+          <p>Incentivos por mayor continuidad de cotizaciones en tramos.</p>
+        </article>
+        <article class="card" data-topic="tasa" hidden>
+          <h3>Incremento en tasa</h3>
+          <p>Aumento gradual de cotización individual según cronograma.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">Replica educativa sin fines comerciales. Estilos y marcas referenciales para la maqueta. © 2025</div>
+  </footer>
+
+  <script>
+    // Tabs (solo estilo y scroll en demo)
+    document.querySelectorAll('.tab').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        if(btn.dataset.tab==='cambios'){
+          document.querySelector('.section').scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+
+    // Chip filter
+    const chips=document.querySelectorAll('.chip');
+    const cards=document.querySelectorAll('#cards [data-topic]');
+    chips.forEach(c=>{
+      c.addEventListener('click',()=>{
+        chips.forEach(x=>x.classList.remove('active'));
+        c.classList.add('active');
+        const t=c.dataset.topic;
+        cards.forEach(card=>{card.hidden = card.dataset.topic!==t;});
+      });
+    });
+  </script>
+
+  <!-- Chatbot Flowise: bloque insertado -->
+  <script type="module">
     import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
     Chatbot.init({
         chatflowid: "97687aa3-50b9-4245-b717-b72b73c5d89e",
@@ -55,8 +272,8 @@
                 width: 400,
                 fontSize: 16,
                 starterPrompts: [
-                    "¿Qué es la reforma de pensiones 2025?",
-                    "¿Que implicaciones tiene?"
+                    '¿Qué es la reforma de pensiones 2025?',
+                    '¿Que implicaciones tiene?'
                 ],
                 starterPromptFontSize: 15,
                 clearChatOnReload: false,
@@ -103,4 +320,7 @@
             }
         }
     })
-</script>
+  </script>
+</body>
+</html>
+
